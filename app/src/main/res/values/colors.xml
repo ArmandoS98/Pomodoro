@@ -30,7 +30,6 @@
     <color name="on_secundary_color">#1E192B</color>
     <color name="secondar_container">#E8DEF8</color>
 
-    <color name="background_views">#FFFFFF</color>
     <!--    divcicion-->
     <color name="md_theme_light_primary">#006686</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>

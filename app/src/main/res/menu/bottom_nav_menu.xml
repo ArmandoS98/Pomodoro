@@ -3,21 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        app:showAsAction="ifRoom"
-        android:title="@string/title_home" />
+        android:id="@+id/nav_pomodoro"
+        android:icon="@drawable/outline_watch_later_24"
+        android:title="Pomodoro"
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        app:showAsAction="ifRoom"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/nav_tasks"
+        android:icon="@drawable/outline_calendar_today_24"
+        android:title="Tasks"
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        app:showAsAction="ifRoom"
-        android:title="@string/title_notifications" />
+        android:id="@+id/nav_adjust_pomodoro"
+        android:icon="@drawable/outline_build_circle_24"
+        android:title="Adjust"
+        app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/outline_person_24"
+        android:title="Profile"
+        app:showAsAction="ifRoom" />
 </menu>
