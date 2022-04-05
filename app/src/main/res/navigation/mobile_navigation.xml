@@ -8,22 +8,35 @@
 
     <fragment
         android:id="@+id/nav_pomodoro"
-        android:name="com.techun.pomodoro.ui.TimerFragment"
+        android:name="com.techun.pomodoro.ui.view.TimerFragment"
         android:label="fragment_timer"
         tools:layout="@layout/fragment_timer" />
     <fragment
         android:id="@+id/nav_tasks"
-        android:name="com.techun.pomodoro.ui.TasksFragment"
+        android:name="com.techun.pomodoro.ui.view.TasksFragment"
         android:label="fragment_tasks"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks">
+        <action
+            android:id="@+id/action_nav_tasks_to_newTaskFragment"
+            app:destination="@id/nav_newTaskFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_adjust_pomodoro"
-        android:name="com.techun.pomodoro.ui.ConfigPomodoroFragment"
+        android:name="com.techun.pomodoro.ui.view.ConfigPomodoroFragment"
         android:label="fragment_config_pomodoro"
         tools:layout="@layout/fragment_config_pomodoro" />
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.techun.pomodoro.ui.ProfileFragment"
+        android:name="com.techun.pomodoro.ui.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_newTaskFragment"
+        android:name="com.techun.pomodoro.ui.view.NewTaskFragment"
+        android:label="fragment_new_task"
+        tools:layout="@layout/fragment_new_task">
+        <action
+            android:id="@+id/action_newTaskFragment_to_nav_tasks"
+            app:destination="@id/nav_tasks" />
+    </fragment>
 </navigation>

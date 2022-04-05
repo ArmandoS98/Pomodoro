@@ -20,5 +20,19 @@
         <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
     </style>
 
+    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton" parent="">
+        <item name="colorContainer">@color/md_theme_dark_onTertiary</item>
+        <item name="colorOnContainer">@color/md_theme_dark_tertiary</item>
+    </style>
+
+    <!--Chip-->
+    <style name="Widget.App.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/stroke_tint</item>
+        <item name="checkedIconVisible">true</item>
+    </style>
 
 </resources>

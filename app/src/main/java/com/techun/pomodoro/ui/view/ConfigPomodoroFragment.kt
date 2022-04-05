@@ -1,4 +1,4 @@
-package com.techun.pomodoro.ui
+package com.techun.pomodoro.ui.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

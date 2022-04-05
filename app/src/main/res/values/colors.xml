@@ -87,4 +87,11 @@
     <color name="md_theme_dark_inversePrimary">#006686</color>
     <color name="md_theme_dark_shadow">#000000</color>
     <color name="md_theme_dark_primaryInverse">#006686</color>
+
+    <!--Yellow-->
+    <color name="md_theme_dark_yellow">#FFE7A9</color>
+    <color name="md_theme_dark_yellowContainer">#936900</color>
+    <!--Green-->
+    <color name="md_theme_dark_green">#C0FFA9</color>
+    <color name="md_theme_dark_greenContainer">#279300</color>
 </resources>

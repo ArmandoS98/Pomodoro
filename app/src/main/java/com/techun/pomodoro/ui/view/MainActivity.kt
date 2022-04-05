@@ -1,13 +1,11 @@
-package com.techun.pomodoro
+package com.techun.pomodoro.ui.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomappbar.BottomAppBar
+import com.techun.pomodoro.R
 import com.techun.pomodoro.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
