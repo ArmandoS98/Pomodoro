@@ -20,7 +20,8 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="pomodoro_config">Pomodoro Config</string>
-    <string name="work_interval">Work interval</string>
+    <string name="work_interval">Work Gap (min)</string>
     <string name="tasks">Tasks</string>
-    <string name="short_break">Short Break</string>
+    <string name="short_break">Break (min)</string>
+    <string name="keep_in_mind_numbers_above_represent_minutes">Keep in mind: Numbers above represent minutes</string>
 </resources>

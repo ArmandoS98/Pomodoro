@@ -23,11 +23,11 @@
                 android:id="@+id/tvHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/prompt_bold"
                 android:text="@string/new_task"
                 android:textSize="@dimen/dim_35sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -209,11 +209,88 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPomodoroConfig">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    android:gravity="center_horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilTask"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="0.7"
+                        android:hint="@string/tasks"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="1" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--Work interval-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilWorkInterval"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1.2"
+                        android:hint="@string/work_interval"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="15" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--Short Break-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilShortBreak"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:hint="@string/short_break"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="1"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!--Tasks-->
+                    &lt;!&ndash;Tasks&ndash;&gt;
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
@@ -225,6 +302,26 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilTask"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="@string/tasks"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <HorizontalScrollView
                         android:id="@+id/hsvTasks"
                         android:layout_width="match_parent"
@@ -233,6 +330,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:scrollbars="none"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -246,7 +344,7 @@
                             app:singleSelection="true" />
                     </HorizontalScrollView>
 
-                    <!--Work interval-->
+                    &lt;!&ndash;Work interval&ndash;&gt;
                     <TextView
                         android:id="@+id/tvWorkInterval"
                         android:layout_width="wrap_content"
@@ -256,7 +354,7 @@
                         android:fontFamily="@font/prompt_medium"
                         android:text="@string/work_interval"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/hsvTasks" />
+                        app:layout_constraintTop_toBottomOf="@+id/tilTask" />
 
                     <HorizontalScrollView
                         android:id="@+id/hsvWorkInterval"
@@ -278,7 +376,8 @@
                             app:singleLine="true"
                             app:singleSelection="true" />
                     </HorizontalScrollView>
-                    <!--Short Break-->
+
+                    &lt;!&ndash;Short Break&ndash;&gt;
                     <TextView
                         android:id="@+id/tvShortBreak"
                         android:layout_width="wrap_content"
@@ -312,9 +411,22 @@
                             app:singleLine="true"
                             app:singleSelection="true" />
                     </HorizontalScrollView>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.cardview.widget.CardView>
 
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/prompt"
+                android:text="@string/keep_in_mind_numbers_above_represent_minutes"
+                android:textSize="@dimen/dim_11sp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewPomodoroConfig" />
 
             <!--Save or Cancel-->
             <LinearLayout
@@ -329,18 +441,17 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewPomodoroConfig">
+                app:layout_constraintTop_toBottomOf="@+id/tvInfo">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnmCancel"
+                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/md_theme_light_background"
                     android:contentDescription="@string/add_new_task"
-                    android:text="@string/cancel"
-                    android:textColor="@color/black" />
+                    android:text="@string/cancel" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnmSave"
