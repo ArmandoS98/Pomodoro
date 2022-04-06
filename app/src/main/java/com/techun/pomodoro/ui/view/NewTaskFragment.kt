@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.techun.pomodoro.R
 import com.techun.pomodoro.databinding.FragmentNewTaskBinding
 
 
-class NewTaskFragment : Fragment() {
+class NewTaskFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentNewTaskBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -38,6 +39,17 @@ class NewTaskFragment : Fragment() {
         //Short Break
         val adapterShortBreak = ArrayAdapter(requireContext(), R.layout.list_item, tasks)
         (binding.tilShortBreak.editText as? AutoCompleteTextView)?.setAdapter(adapterShortBreak)
+
+        binding.imgBackArrow.setOnClickListener(this)
+        binding.btnmCancel.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.imgBackArrow, R.id.btnmCancel -> {
+                findNavController().popBackStack(R.id.nav_tasks, false)
+            }
+        }
     }
 
     /*  private fun setupChip() {

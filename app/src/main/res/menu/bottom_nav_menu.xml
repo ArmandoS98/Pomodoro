@@ -5,24 +5,24 @@
     <item
         android:id="@+id/nav_pomodoro"
         android:icon="@drawable/outline_watch_later_24"
-        android:title="Pomodoro"
+        android:title="@string/pomodoro"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_tasks"
         android:icon="@drawable/outline_calendar_today_24"
-        android:title="Tasks"
+        android:title="@string/tasks"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_adjust_pomodoro"
-        android:icon="@drawable/outline_build_circle_24"
-        android:title="Adjust"
+        android:icon="@drawable/outline_insights_24"
+        android:title="@string/stats"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/outline_person_24"
-        android:title="Profile"
+        android:title="@string/profile"
         app:showAsAction="ifRoom" />
 </menu>

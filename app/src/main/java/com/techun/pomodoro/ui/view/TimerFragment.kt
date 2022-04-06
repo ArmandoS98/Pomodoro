@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -38,6 +39,7 @@ class TimerFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.fabPlayAndPause.setOnClickListener(this)
         binding.fabStop.setOnClickListener(this)
+        binding.imgCloseTask.setOnClickListener(this)
     }
 /*
     private fun progressBarStatus(progress: Int) {
@@ -70,6 +72,10 @@ class TimerFragment : Fragment(), View.OnClickListener {
                     timer.cancel()
                     onTimerFinished()
                 }
+            }
+            R.id.imgCloseTask -> {
+                binding.mcvRunningTask.visibility = GONE
+                binding.tvCurrentTimer.text = "00:00"
             }
         }
     }
@@ -192,7 +198,7 @@ class TimerFragment : Fragment(), View.OnClickListener {
         val minutesUntilFinished = secondsRemaining / 60
         val secondsInMinuteUntilFinished = secondsRemaining - minutesUntilFinished * 60
         val secondsStr = secondsInMinuteUntilFinished.toString()
-        binding.textView2.text =
+        binding.tvCurrentTimer.text =
             "$minutesUntilFinished:${if (secondsStr.length == 2) secondsStr else "0$secondsStr"}"
         binding.progressBar.progress = (timerLengthSeconds - secondsRemaining).toInt()
     }

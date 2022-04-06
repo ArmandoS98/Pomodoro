@@ -24,4 +24,7 @@
     <string name="tasks">Tasks</string>
     <string name="short_break">Break (min)</string>
     <string name="keep_in_mind_numbers_above_represent_minutes">Keep in mind: Numbers above represent minutes</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="stats">Stats</string>
+    <string name="profile">Profile</string>
 </resources>
