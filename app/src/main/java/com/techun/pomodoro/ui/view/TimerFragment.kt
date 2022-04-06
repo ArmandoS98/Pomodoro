@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.techun.pomodoro.R
 import com.techun.pomodoro.data.sharedPreferences.PreferencesProvider
 import com.techun.pomodoro.data.sharedPreferences.SharedPrefHelper
+import com.techun.pomodoro.data.utils.NotificationUtil
 import com.techun.pomodoro.data.utils.TimerState
 import com.techun.pomodoro.databinding.FragmentTimerBinding
 import com.techun.pomodoro.ui.TimerExpireReceiver
@@ -122,7 +123,7 @@ class TimerFragment : Fragment(), View.OnClickListener {
         initTimer()
 
         removeAlarm(requireContext())
-        //TODO: hide notification
+        NotificationUtil.hideTimerNotification(requireContext())
     }
 
     override fun onPause() {
@@ -131,10 +132,10 @@ class TimerFragment : Fragment(), View.OnClickListener {
             TimerState.Running -> {
                 timer.cancel()
                 val wakeUpTime = setAlarm(requireContext(), nowSecond, secondsRemaining)
-                //TODO: show notification
+                NotificationUtil.showTimerRunning(requireContext(),wakeUpTime)
             }
             TimerState.Paused -> {
-                //TODO: show notification
+                NotificationUtil.showTimerPaused(requireContext())
             }
             else -> {
                 //TODO: nothing todo

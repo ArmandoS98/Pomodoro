@@ -3,6 +3,7 @@
     package="com.techun.pomodoro">
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pomodoro">
         <receiver
+            android:name=".ui.TimerNotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="stop" />
+                <action android:name="pause" />
+                <action android:name="resume" />
+                <action android:name="start" />
+            </intent-filter>
+        </receiver>
+        <receiver
             android:name=".ui.TimerExpireReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <activity
             android:name=".ui.view.MainActivity"
