@@ -27,4 +27,9 @@
     <string name="pomodoro">Pomodoro</string>
     <string name="stats">Stats</string>
     <string name="profile">Profile</string>
+    <string name="dash">-</string>
+    <string name="productivity">Productivity</string>
+    <string name="summary_by_task">Summary by task</string>
+    <string name="view_more">View more</string>
+    <string name="pomodoro_techinque">Pomodoro techinque allows you yo work\nfor a long time without feeling tired</string>
 </resources>
