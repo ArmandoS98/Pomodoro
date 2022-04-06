@@ -1,5 +1,9 @@
 package com.techun.pomodoro.ui.view
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -13,10 +17,42 @@ import com.techun.pomodoro.data.sharedPreferences.PreferencesProvider
 import com.techun.pomodoro.data.sharedPreferences.SharedPrefHelper
 import com.techun.pomodoro.data.utils.TimerState
 import com.techun.pomodoro.databinding.FragmentTimerBinding
+import com.techun.pomodoro.ui.TimerExpireReceiver
 import com.techun.pomodoro.ui.extensions.getTime
 import com.techun.pomodoro.ui.extensions.getTimeMilisInFuture
+import java.util.*
 
 class TimerFragment : Fragment(), View.OnClickListener {
+    companion object {
+        fun setAlarm(context: Context, nowSecond: Long, secondsRemaining: Long): Long {
+            val wakeUpTime = (nowSecond + secondsRemaining) * 1000
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, TimerExpireReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeUpTime, pendingIntent)
+            PreferencesProvider.setAlarmSetTime(
+                context,
+                SharedPrefHelper.ALARM_SET_TIME_TO,
+                nowSecond
+            )
+            return wakeUpTime
+        }
+
+        fun removeAlarm(context: Context) {
+            val intent = Intent(context, TimerExpireReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            alarmManager.cancel(pendingIntent)
+            PreferencesProvider.setAlarmSetTime(
+                context,
+                SharedPrefHelper.ALARM_SET_TIME_TO,
+                0
+            )
+        }
+
+        val nowSecond: Long get() = Calendar.getInstance().timeInMillis / 1000
+    }
+
     private var _binding: FragmentTimerBinding? = null
     private val binding get() = _binding!!
 
@@ -85,7 +121,8 @@ class TimerFragment : Fragment(), View.OnClickListener {
 
         initTimer()
 
-        //TODO: remove backgound timer, hide notification
+        removeAlarm(requireContext())
+        //TODO: hide notification
     }
 
     override fun onPause() {
@@ -93,7 +130,8 @@ class TimerFragment : Fragment(), View.OnClickListener {
         when (timerState) {
             TimerState.Running -> {
                 timer.cancel()
-                //TODO: start backgound timer and show notification
+                val wakeUpTime = setAlarm(requireContext(), nowSecond, secondsRemaining)
+                //TODO: show notification
             }
             TimerState.Paused -> {
                 //TODO: show notification
@@ -139,10 +177,16 @@ class TimerFragment : Fragment(), View.OnClickListener {
         else
             timerLengthSeconds
 
-        //TODO: change secondsRemaining according to where the background timer stopped
+        val alarmSetTime = PreferencesProvider.getAlarmSetTime(
+            requireContext(),
+            SharedPrefHelper.ALARM_SET_TIME_TO
+        )
+        if (alarmSetTime > 0)
+            secondsRemaining -= nowSecond - alarmSetTime
 
-        //resume where we left off
-        if (timerState == TimerState.Running)
+        if (secondsRemaining <= 0)
+            onTimerFinished()
+        else if (timerState == TimerState.Running)
             startTimer()
 
         updateButtons()

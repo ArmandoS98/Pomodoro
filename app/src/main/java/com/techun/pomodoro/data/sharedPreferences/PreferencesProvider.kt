@@ -40,6 +40,13 @@ object PreferencesProvider {
         editor.putInt(key.value, value.ordinal).apply()
     }
 
+    fun getAlarmSetTime(context: Context, key: SharedPrefHelper): Long {
+        return prefs(context).getLong(key.value, 0)
+    }
+    fun setAlarmSetTime(context: Context, key: SharedPrefHelper, value: Long) {
+        val editor = prefs(context).edit()
+        editor.putLong(key.value, value).apply()
+    }
     fun set(context: Context, key: SharedPrefHelper, value: String) {
         val editor = prefs(context).edit()
         editor.putString(key.value, value).apply()
