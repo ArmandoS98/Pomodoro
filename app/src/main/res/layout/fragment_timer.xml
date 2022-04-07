@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background"
     tools:context=".ui.view.TimerFragment">
 
 
@@ -20,7 +19,6 @@
         android:clickable="true"
         android:elevation="0dp"
         android:focusable="true"
-        app:cardBackgroundColor="@color/md_theme_light_secondaryContainer"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

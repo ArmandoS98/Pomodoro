@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background"
     tools:context=".ui.view.TasksFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -32,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--Main Information-->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
                 android:layout_height="?attr/actionBarSize"
@@ -43,7 +42,6 @@
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/md_theme_light_secondaryContainer"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +122,7 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!--All Tasks-->
             <TextView
