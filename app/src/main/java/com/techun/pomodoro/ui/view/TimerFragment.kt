@@ -10,8 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.techun.pomodoro.R
 import com.techun.pomodoro.data.sharedPreferences.PreferencesProvider
 import com.techun.pomodoro.data.sharedPreferences.SharedPrefHelper
@@ -19,8 +23,13 @@ import com.techun.pomodoro.data.utils.NotificationUtil
 import com.techun.pomodoro.data.utils.TimerState
 import com.techun.pomodoro.databinding.FragmentTimerBinding
 import com.techun.pomodoro.data.receivers.TimerExpireReceiver
+import com.techun.pomodoro.ui.extensions.goToActivity
+import com.techun.pomodoro.ui.viewmodel.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.*
 
+@AndroidEntryPoint
 class TimerFragment : Fragment(), View.OnClickListener {
     companion object {
         fun setAlarm(context: Context, nowSecond: Long, secondsRemaining: Long): Long {
@@ -52,6 +61,7 @@ class TimerFragment : Fragment(), View.OnClickListener {
         val nowSecond: Long get() = Calendar.getInstance().timeInMillis / 1000
     }
 
+    private val viewModel: AuthViewModel by viewModels()
     private var _binding: FragmentTimerBinding? = null
     private val binding get() = _binding!!
 
@@ -67,6 +77,9 @@ class TimerFragment : Fragment(), View.OnClickListener {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentTimerBinding.inflate(inflater, container, false)
+        getUser()
+        registerObserver()
+        listenToChannels()
         return binding.root
     }
 
@@ -269,4 +282,38 @@ class TimerFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    //FirebaseAuth
+    private fun getUser() {
+        viewModel.getCurrentUser()
+    }
+
+    private fun listenToChannels() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.allEventsFlow.collect { event ->
+                when(event){
+                    is AuthViewModel.AllEvents.Message ->{
+                        Toast.makeText(requireContext(), event.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun registerObserver() {
+        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
+            user?.let {
+                binding.apply {
+                   /* welcomeTxt.text = "welcome ${it.email}"
+                    signinButton.text = "sign out"
+                    signinButton.setOnClickListener {
+                        viewModel.signOut()
+                    }*/
+                }
+            } ?: binding.apply {
+                requireActivity().goToActivity<LoginActivity>()
+            }
+        }
+    }
+
 }
