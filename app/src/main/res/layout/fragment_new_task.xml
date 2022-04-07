@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--Task name and description-->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -51,7 +51,6 @@
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/md_theme_light_secondaryContainer"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +114,7 @@
                             android:textCursorDrawable="@null" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!--Task Priority-->
             <TextView
@@ -130,7 +129,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewTaskPriority"
                 android:layout_width="0dp"
                 android:layout_height="?attr/actionBarSize"
@@ -141,7 +140,6 @@
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/md_theme_light_secondaryContainer"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +183,7 @@
                             android:text="@string/low" />
                     </com.google.android.material.chip.ChipGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!--Pomodoro Config-->
             <TextView
@@ -200,7 +198,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewTaskPriority" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewPomodoroConfig"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -211,7 +209,6 @@
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/md_theme_light_secondaryContainer"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -420,8 +417,7 @@
                             app:singleSelection="true" />
                     </HorizontalScrollView>
                 </androidx.constraintlayout.widget.ConstraintLayout>-->
-            </androidx.cardview.widget.CardView>
-
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/tvInfo"

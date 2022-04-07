@@ -18,9 +18,7 @@ import com.techun.pomodoro.data.sharedPreferences.SharedPrefHelper
 import com.techun.pomodoro.data.utils.NotificationUtil
 import com.techun.pomodoro.data.utils.TimerState
 import com.techun.pomodoro.databinding.FragmentTimerBinding
-import com.techun.pomodoro.ui.TimerExpireReceiver
-import com.techun.pomodoro.ui.extensions.getTime
-import com.techun.pomodoro.ui.extensions.getTimeMilisInFuture
+import com.techun.pomodoro.data.receivers.TimerExpireReceiver
 import java.util.*
 
 class TimerFragment : Fragment(), View.OnClickListener {

@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pomodoro">
+
         <receiver
-            android:name=".ui.TimerNotificationActionReceiver"
+            android:name=".data.receivers.TimerNotificationActionReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -23,7 +24,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".ui.TimerExpireReceiver"
+            android:name=".data.receivers.TimerExpireReceiver"
             android:enabled="true"
             android:exported="false" />
 
@@ -31,6 +32,11 @@
             android:name=".ui.view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.view.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pomodoro.Fullscreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +44,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.view.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Pomodoro.Fullscreen" />
 
         <meta-data
             android:name="preloaded_fonts"

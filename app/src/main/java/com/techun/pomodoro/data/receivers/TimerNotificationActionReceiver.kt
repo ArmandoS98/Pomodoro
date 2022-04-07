@@ -1,4 +1,4 @@
-package com.techun.pomodoro.ui
+package com.techun.pomodoro.data.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -22,6 +22,7 @@
 
         <!--Change Background-->
         <item name="android:windowBackground">@color/md_theme_light_background</item>
+
         <!--Cardview-->
         <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
     </style>
@@ -57,4 +58,10 @@
         <item name="checkedIconVisible">true</item>
     </style>
 
+    <!--FullScreen-->
+    <style name="Theme.Pomodoro.Fullscreen" parent="Theme.Pomodoro">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
 </resources>

@@ -13,7 +13,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.techun.pomodoro.R
-import com.techun.pomodoro.ui.TimerNotificationActionReceiver
+import com.techun.pomodoro.data.receivers.TimerNotificationActionReceiver
 import com.techun.pomodoro.ui.view.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*

@@ -34,4 +34,7 @@
     <string name="pomodoro_techinque">Pomodoro techinque allows you yo work\nfor a long time without feeling tired</string>
     <string name="juan_perez_eliminar">Juan Perez</string>
     <string name="emial_eliminar">juanperez@gmail.com</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
