@@ -30,8 +30,10 @@
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_watch_later_24.xml" value="0.2645" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/splash_background.xml" value="0.198" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/splash_background_night.xml" value="0.198" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/activity_login.xml" value="0.35260416666666666" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/chip.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/custom_marker_view.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_config_pomodoro.xml" value="0.36666666666666664" />

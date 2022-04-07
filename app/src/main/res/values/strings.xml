@@ -37,4 +37,23 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or">Or</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="new_to_logistics">New to Logistics?</string>
+    <string name="register">Register</string>
+    <string name="sign_up">Sign up</string>
+    <string name="user_name">User name</string>
+    <string name="continue_text">Continue</string>
+    <string name="joined_us_before">Joined us before?</string>
+    <string name="by_signing_up_you_re_agree_to_our">By signing up, you\'re agree to our</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="and">and</string>
+    <string name="forgot_n_password">Forgot\nPassword?</string>
+    <string name="don_t_worry_it_happens_please_enter_the_address_associated_with_your_account">Don\'t worry! It happens. Please enter the address associated with your account.</string>
+    <string name="submit">Submit</string>
 </resources>

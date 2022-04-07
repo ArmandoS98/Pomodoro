@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
         Handler().postDelayed({
-            goToActivity<MainActivity>()
+            goToActivity<LoginActivity>()
         }, 3000)
 
     }

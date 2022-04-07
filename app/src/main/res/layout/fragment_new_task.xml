@@ -27,6 +27,7 @@
                 android:src="@drawable/outline_arrow_back_ios_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tvHeader"
                 android:layout_width="wrap_content"
@@ -218,9 +219,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
+                    android:gravity="center_horizontal"
                     android:orientation="horizontal"
-                    android:weightSum="3"
-                    android:gravity="center_horizontal">
+                    android:weightSum="3">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilTask"
@@ -285,7 +286,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
-                            android:text="1"/>
+                            android:text="1" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -421,13 +422,13 @@
 
             <TextView
                 android:id="@+id/tvInfo"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:fontFamily="@font/prompt"
                 android:text="@string/keep_in_mind_numbers_above_represent_minutes"
                 android:textSize="@dimen/dim_11sp"
-                android:layout_marginTop="3dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardViewPomodoroConfig" />
