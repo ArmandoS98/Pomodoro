@@ -31,7 +31,7 @@
         android:id="@+id/nav_profile"
         android:name="com.techun.pomodoro.ui.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_nav_profile_to_nav_settingsFragment"
             app:destination="@id/nav_settingsFragment"
@@ -54,7 +54,7 @@
         android:id="@+id/nav_settingsFragment"
         android:name="com.techun.pomodoro.ui.view.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_nav_settingsFragment_to_nav_profile"
             app:destination="@id/nav_profile"
@@ -62,5 +62,17 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_nav_settingsFragment_to_accountFragment"
+            app:destination="@id/nav_accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_accountFragment"
+        android:name="com.techun.pomodoro.ui.view.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment_to_nav_settingsFragment"
+            app:destination="@id/nav_settingsFragment" />
     </fragment>
 </navigation>

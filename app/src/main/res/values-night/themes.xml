@@ -29,6 +29,17 @@
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
 
+    <style name="Widget.App.CardView.Settings" parent="Base.CardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card.Settings</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Card.Settings" parent="">
+        <item name="colorSecondary">@color/md_theme_dark_secondary</item>
+        <item name="colorSurface">@color/md_theme_dark_surface</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
+    </style>
+
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">8dp</item>

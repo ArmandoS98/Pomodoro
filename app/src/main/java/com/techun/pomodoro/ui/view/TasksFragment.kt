@@ -32,7 +32,7 @@ class TasksFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnmNewTask.setOnClickListener(this)
         super.onViewCreated(view, savedInstanceState)
-        val allTasks = listOf(
+        val allTasks = emptyList<TaskModel>() /*listOf(
             TaskModel(
                 "Mobile app design",
                 "30 minutes",
@@ -54,8 +54,8 @@ class TasksFragment : Fragment(), View.OnClickListener {
                 "25 min",
                 2
             )
-        )
-        val completedTasts = listOf(
+        )*/
+        val completedTasts = emptyList<TaskModel>() /*listOf(
             TaskModel(
                 "Onboarding",
                 "1 h 30 min",
@@ -63,7 +63,7 @@ class TasksFragment : Fragment(), View.OnClickListener {
                 "25 min",
                 2
             )
-        )
+        )*/
         AllTasksAdapter(context).setMenu(allTasks)
         CompletedTaskAdapter(context).setMenu(completedTasts)
 

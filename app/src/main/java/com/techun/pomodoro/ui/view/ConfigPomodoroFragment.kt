@@ -58,7 +58,7 @@ class ConfigPomodoroFragment : Fragment(), OnChartValueSelectedListener {
         initLineChart()
         setDataToLineChart()
 
-        val allTasks = listOf(
+        val allTasks = emptyList<TaskModel>()/*listOf(
             TaskModel(
                 "Mobile app design",
                 "30 minutes",
@@ -94,7 +94,7 @@ class ConfigPomodoroFragment : Fragment(), OnChartValueSelectedListener {
                 "25 min",
                 2
             )
-        )
+        )*/
         AllTasksAdapter(context).setMenu(allTasks)
         recyclerInit(allTasks)
         /* scoreList = getScoreList()

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
-import com.techun.pomodoro.data.firebase.BaseAuthRepository
+import com.techun.pomodoro.domain.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -14,31 +14,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val repository: BaseAuthRepository
+    private val signInWithEmailPassUseCase: SignInWithEmailPassUseCase,
+    private val signUpWithEmailPassUseCase: SignUpWithEmailPassUseCase,
+    private val signOutUseCase: SignOutUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase,
+    private val sendPasswordResetEmailUseCase: SendPasswordResetEmailUseCase,
+    private val singnInWithGoogleUseCase: SingnInWithGoogleUseCase
 ) : ViewModel() {
     private val TAG = "AuthViewModel"
 
-
-    /**This is a ViewModel class and is responsible for the logic of all ui.
-     * It shall be shared with the three fragments.
-     * Only share ViewModels when the fragments share a feature or functionality */
-
-    //create the auth state livedata object that will be passed to
-    //the home fragment and shall be used to control the ui i.e show authentication state
-    //control behaviour of sign in and sign up button
     private val _firebaseUser = MutableLiveData<FirebaseUser?>()
     val currentUser get() = _firebaseUser
-
-    //create our channels that will be used to pass messages to the main ui
-    //create event channel
     private val eventsChannel = Channel<AllEvents>()
-
-    //the messages passed to the channel shall be received as a Flowable
-    //in the ui
     val allEventsFlow = eventsChannel.receiveAsFlow()
 
-
-    //validate all fields first before performing any sign in operations
     fun signInUser(email: String, password: String) = viewModelScope.launch {
         when {
             email.isEmpty() -> {
@@ -53,7 +42,6 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    //validate all fields before performing any sign up operations
     fun signUpUser(email: String, password: String, confirmPass: String) = viewModelScope.launch {
         when {
             email.isEmpty() -> {
@@ -71,44 +59,45 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-
-    private fun actualSignInUser(email: String, password: String) = viewModelScope.launch {
-        try {
-            val user = repository.signInWithEmailPassword(email, password)
-            user?.let {
-                _firebaseUser.postValue(it)
-                eventsChannel.send(AllEvents.Message("login success"))
+    private fun actualSignInUser(email: String, password: String) {
+        viewModelScope.launch {
+            try {
+                val user = signInWithEmailPassUseCase(email, password)
+                user?.let {
+                    _firebaseUser.postValue(it)
+                    eventsChannel.send(AllEvents.Message("login success"))
+                }
+            } catch (e: Exception) {
+                val error = e.toString().split(":").toTypedArray()
+                Log.d(TAG, "signInUser: ${error[1]}")
+                eventsChannel.send(AllEvents.Error(error[1]))
             }
-        } catch (e: Exception) {
-            val error = e.toString().split(":").toTypedArray()
-            Log.d(TAG, "signInUser: ${error[1]}")
-            eventsChannel.send(AllEvents.Error(error[1]))
         }
     }
 
-    private fun actualSignUpUser(email: String, password: String) = viewModelScope.launch {
-        try {
-            val user = repository.signUpWithEmailPassword(email, password)
-            user?.let {
-                _firebaseUser.postValue(it)
-                eventsChannel.send(AllEvents.Message("sign up success"))
+    private fun actualSignUpUser(email: String, password: String) {
+        viewModelScope.launch {
+            try {
+                val user = signUpWithEmailPassUseCase(email, password)
+                user?.let {
+                    _firebaseUser.postValue(it)
+                    eventsChannel.send(AllEvents.Message("sign up success"))
+                }
+            } catch (e: Exception) {
+                val error = e.toString().split(":").toTypedArray()
+                Log.d(TAG, "signInUser: ${error[1]}")
+                eventsChannel.send(AllEvents.Error(error[1]))
             }
-        } catch (e: Exception) {
-            val error = e.toString().split(":").toTypedArray()
-            Log.d(TAG, "signInUser: ${error[1]}")
-            eventsChannel.send(AllEvents.Error(error[1]))
         }
     }
 
     fun signOut() = viewModelScope.launch {
         try {
-            val user = repository.signOut()
+            val user = signOutUseCase()
             user?.let {
                 eventsChannel.send(AllEvents.Message("logout failure"))
             } ?: eventsChannel.send(AllEvents.Message("sign out successful"))
-
             getCurrentUser()
-
         } catch (e: Exception) {
             val error = e.toString().split(":").toTypedArray()
             Log.d(TAG, "signInUser: ${error[1]}")
@@ -117,7 +106,7 @@ class AuthViewModel @Inject constructor(
     }
 
     fun getCurrentUser() = viewModelScope.launch {
-        val user = repository.getCurrentUser()
+        val user = getCurrentUserUseCase()
         _firebaseUser.postValue(user)
     }
 
@@ -134,8 +123,8 @@ class AuthViewModel @Inject constructor(
 
     private fun sendPasswordResetEmail(email: String) = viewModelScope.launch {
         try {
-            val result = repository.sendResetPassword(email)
-            if (result) {
+            val result = sendPasswordResetEmailUseCase(email)
+            if (result!!) {
                 eventsChannel.send(AllEvents.Message("reset email sent"))
             } else {
                 eventsChannel.send(AllEvents.Error("could not send password reset"))
@@ -144,6 +133,22 @@ class AuthViewModel @Inject constructor(
             val error = e.toString().split(":").toTypedArray()
             Log.d(TAG, "signInUser: ${error[1]}")
             eventsChannel.send(AllEvents.Error(error[1]))
+        }
+    }
+
+    fun signInUserGoogle(idToken: String) {
+        viewModelScope.launch {
+            try {
+                val user = singnInWithGoogleUseCase(idToken)
+                user?.let {
+                    _firebaseUser.postValue(it)
+                    eventsChannel.send(AllEvents.Message("login success"))
+                }
+            } catch (e: Exception) {
+                val error = e.toString().split(":").toTypedArray()
+                Log.d(TAG, "signInUser: ${error[1]}")
+                eventsChannel.send(AllEvents.Error(error[1]))
+            }
         }
     }
 

@@ -46,7 +46,7 @@ class NewTaskFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.imgSettings, R.id.btnmCancel -> {
+            R.id.imgBackArrow, R.id.btnmCancel -> {
                 findNavController().popBackStack(R.id.nav_tasks, false)
             }
         }

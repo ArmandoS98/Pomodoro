@@ -36,10 +36,10 @@ class CompletedTaskAdapter (private val context: Context?) :
             )
         )
 
-        holder.binding.tvTitleTask.text = menuList[position].title
-        holder.binding.tvTime.text = menuList[position].time
-        holder.binding.tvLaps.text = menuList[position].laps
-        holder.binding.tvTimeLaps.text = menuList[position].minutes
+        holder.binding.tvTitleTask.text = menuList[position].name
+        holder.binding.tvTime.text = menuList[position].work_gap.toString()
+        holder.binding.tvLaps.text = menuList[position].no_of_tasks.toString()
+        holder.binding.tvTimeLaps.text = menuList[position].short_breaks.toString()
     }
 
     override fun getItemCount() = menuList.size

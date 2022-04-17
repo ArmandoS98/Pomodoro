@@ -7,6 +7,8 @@ interface BaseAuthenticator {
 
     suspend fun signInWithEmailPassword(email: String, password: String): FirebaseUser?
 
+    suspend fun singnInWithGoogle(idToken: String): FirebaseUser?
+
     fun signOut(): FirebaseUser?
 
     fun getUser(): FirebaseUser?

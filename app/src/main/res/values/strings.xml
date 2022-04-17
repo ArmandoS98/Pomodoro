@@ -56,4 +56,7 @@
     <string name="forgot_n_password">Forgot\nPassword?</string>
     <string name="don_t_worry_it_happens_please_enter_the_address_associated_with_your_account">Don\'t worry! It happens. Please enter the address associated with your account.</string>
     <string name="submit">Submit</string>
+    <string name="configuration">Settings</string>
+    <string name="account">Account</string>
+    <string name="logout">Logout</string>
 </resources>

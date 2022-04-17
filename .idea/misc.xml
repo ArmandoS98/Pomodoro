@@ -14,12 +14,15 @@
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.268" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/ic_launcher_background.xml" value="0.268" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.268" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_access_alarm_24.xml" value="0.268" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_account_circle_24.xml" value="0.268" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_add_24.xml" value="0.2315" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_arrow_back_ios_24.xml" value="0.2315" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_build_circle_24.xml" value="0.2645" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_calendar_today_24.xml" value="0.2645" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_close_24.xml" value="0.2315" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_edit_24.xml" value="0.2315" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_help_outline_24.xml" value="0.268" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_insights_24.xml" value="0.2315" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_next_plan_24.xml" value="0.2315" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/drawable/outline_pause_24.xml" value="0.268" />
@@ -36,6 +39,7 @@
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/chip.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/custom_marker_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_account.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_config_pomodoro.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_dashboard.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_home.xml" value="0.19010416666666666" />
@@ -45,6 +49,7 @@
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_tasks.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/fragment_timer.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/item_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/item_task.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/layout/list_item.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Pomodoro/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />

@@ -16,6 +16,10 @@ class AuthRepository @Inject constructor(
         return authenticator.signUpWithEmailPassword(email, password)
     }
 
+    override suspend fun singnInWithGoogle(idToken: String): FirebaseUser? {
+        return authenticator.singnInWithGoogle(idToken)
+    }
+
     override fun signOut(): FirebaseUser? {
         return authenticator.signOut()
     }
