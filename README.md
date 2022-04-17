@@ -8,7 +8,8 @@ App #4 del App Monthly Challenge 2022 de MoureDev
 * Dagger Hilt
 * Clean Architecture Android
 * Android MVVM architecture
-* Retrofit2
+* Firebase
+* Material Design 3
 * Room
 
 ### Requisitos:
