@@ -25,6 +25,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.techun.pomodoro.data.model.TaskModel
 import com.techun.pomodoro.databinding.FragmentConfigPomodoroBinding
+import com.techun.pomodoro.domain.TaskItem
 import com.techun.pomodoro.ui.view.adapters.AllTasksAdapter
 import com.techun.pomodoro.ui.view.adapters.CompletedTaskAdapter
 
@@ -58,7 +59,7 @@ class ConfigPomodoroFragment : Fragment(), OnChartValueSelectedListener {
         initLineChart()
         setDataToLineChart()
 
-        val allTasks = emptyList<TaskModel>()/*listOf(
+        val allTasks = emptyList<TaskItem>()/*listOf(
             TaskModel(
                 "Mobile app design",
                 "30 minutes",
@@ -120,7 +121,7 @@ class ConfigPomodoroFragment : Fragment(), OnChartValueSelectedListener {
          barChart.invalidate()*/
     }
 
-    private fun recyclerInit(temp: List<TaskModel>) {
+    private fun recyclerInit(temp: List<TaskItem>) {
         adapter = AllTasksAdapter(context)
         adapter.setMenu(temp)
         binding.rvAllTasksStats.layoutManager = LinearLayoutManager(context)

@@ -6,6 +6,9 @@ data class TaskModel(
     val priority: Int,
     val no_of_tasks: Int,
     val work_gap: Int,
-    val short_breaks: Int
+    val short_breaks: Int,
+    val laps_completed: Int,
+    val task_completed: Int,
+    val iscurrenttask: Int
 )
 

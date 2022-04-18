@@ -1,24 +1,35 @@
 package com.techun.pomodoro.ui.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.techun.pomodoro.R
-import com.techun.pomodoro.data.model.TaskModel
 import com.techun.pomodoro.databinding.FragmentTasksBinding
+import com.techun.pomodoro.domain.TaskItem
 import com.techun.pomodoro.ui.view.adapters.AllTasksAdapter
 import com.techun.pomodoro.ui.view.adapters.CompletedTaskAdapter
+import com.techun.pomodoro.ui.viewmodel.TaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TasksFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentTasksBinding? = null
     private val binding get() = _binding!!
     lateinit var adapter: AllTasksAdapter
     lateinit var completedTaskadapter: CompletedTaskAdapter
+    private val taskViewModel: TaskViewModel by viewModels()
+
+    override fun onStart() {
+        super.onStart()
+        taskViewModel.onCreate()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,48 +41,51 @@ class TasksFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btnmNewTask.setOnClickListener(this)
         super.onViewCreated(view, savedInstanceState)
-        val allTasks = emptyList<TaskModel>() /*listOf(
-            TaskModel(
-                "Mobile app design",
-                "30 minutes",
-                "1/4",
-                "25 min",
-                0
-            ),
-            TaskModel(
-                "Ui animation",
-                "0 minutes",
-                "0/2",
-                "25 min",
-                1
-            ),
-            TaskModel(
-                "Study languages",
-                "0 minutes",
-                "0/1",
-                "25 min",
-                2
-            )
-        )*/
-        val completedTasts = emptyList<TaskModel>() /*listOf(
-            TaskModel(
-                "Onboarding",
-                "1 h 30 min",
-                "3/4",
-                "25 min",
-                2
-            )
-        )*/
-        AllTasksAdapter(context).setMenu(allTasks)
-        CompletedTaskAdapter(context).setMenu(completedTasts)
+        binding.btnmNewTask.setOnClickListener(this)
 
-        //Metodo el recyclerview
-        recyclerInit(allTasks, completedTasts)
+        taskViewModel.taskModel.observe(viewLifecycleOwner) { tasks ->
+            if (tasks.isEmpty()) {
+//                binding.tvRanking.visibility = View.VISIBLE
+            } else {
+//                binding.tvRanking.visibility = View.GONE
+
+
+//                val pendingTasks = tasks.map { it.toPendingTask() }
+
+                val completedTask = mutableListOf<TaskItem>()
+                val pendingTasks = mutableListOf<TaskItem>()
+                tasks.forEach {
+                    if (it.task_completed == 1) {
+                        //Completed Task
+                        completedTask.add(it)
+                    } else {
+                        //Not completed task
+                        pendingTasks.add(it)
+                    }
+                }
+                println("Tasks= $tasks")
+                binding.tvTotalProyects.text = tasks.size.toString()
+                AllTasksAdapter(context).setMenu(tasks)
+                CompletedTaskAdapter(context).setMenu(tasks)
+
+                //Metodo el recyclerview
+                recyclerInit(pendingTasks, completedTask)
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.nsvTasks.setOnScrollChangeListener { _, _, _, _, _ ->
+                if (binding.nsvTasks.scrollY > 0) {
+                    binding.btnmNewTask.hide()
+                } else {
+                    binding.btnmNewTask.show()
+                }
+            }
+        }
     }
 
-    private fun recyclerInit(temp: List<TaskModel>, completedTasts: List<TaskModel>) {
+    private fun recyclerInit(temp: List<TaskItem>, completedTasts: List<TaskItem>) {
         adapter = AllTasksAdapter(context)
         adapter.setMenu(temp)
         binding.rvAllTasks.layoutManager = LinearLayoutManager(context)
@@ -97,14 +111,8 @@ class TasksFragment : Fragment(), View.OnClickListener {
                     .setPopEnterAnim(R.anim.from_right)
                     .setPopExitAnim(R.anim.to_left)
 
-                //Envio de información
-                val bundle = Bundle()
-                bundle.putString(
-                    "nada",
-                    "nada"
-                )
                 val opciones: NavOptions = builder.build()
-                Navigation.findNavController(v).navigate(R.id.nav_newTaskFragment, bundle, opciones)
+                Navigation.findNavController(v).navigate(R.id.nav_newTaskFragment, null, opciones)
             }
         }
     }

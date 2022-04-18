@@ -80,9 +80,7 @@
                             android:id="@+id/tieTaskName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
                             android:inputType="text"
-                            android:maxLength="10"
                             android:maxLines="1"
                             android:textCursorDrawable="@null" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -108,9 +106,7 @@
                             android:id="@+id/tieShortDescription"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:ems="10"
                             android:inputType="text"
-                            android:maxLength="10"
                             android:maxLines="1"
                             android:textCursorDrawable="@null" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -151,6 +147,7 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/cgPriority"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -162,21 +159,21 @@
                         app:singleSelection="true">
 
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip6"
+                            android:id="@+id/cHight"
                             style="@style/Widget.App.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/hight" />
 
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip5"
+                            android:id="@+id/cMedium"
                             style="@style/Widget.App.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/medium" />
 
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip4"
+                            android:id="@+id/cLow"
                             style="@style/Widget.App.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -238,6 +235,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                         <AutoCompleteTextView
+                            android:id="@+id/actTasks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
@@ -260,6 +258,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                         <AutoCompleteTextView
+                            android:id="@+id/actWorkG"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
@@ -283,6 +282,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                         <AutoCompleteTextView
+                            android:id="@+id/actBreak"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"

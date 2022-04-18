@@ -7,6 +7,7 @@
     tools:context=".ui.view.TasksFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvTasks"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/prompt_bold"
-                            android:text="4"
+                            android:text="0"
                             android:textSize="35sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/tvTotalTasksInProject"
@@ -178,7 +179,7 @@
 
 
     <!--Add new task-->
-    <com.google.android.material.button.MaterialButton
+<!--    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnmNewTask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -187,10 +188,25 @@
         android:layout_marginBottom="32dp"
         android:contentDescription="@string/add_new_task"
         android:text="@string/add_new_task"
+        android:visibility="gone"
         app:icon="@drawable/outline_add_24"
         app:iconGravity="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnmNewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/add_new_task"
+        android:text="@string/add_new_task"
+        app:elevation="0dp"
+        app:icon="@drawable/outline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

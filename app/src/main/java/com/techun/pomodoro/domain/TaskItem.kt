@@ -9,9 +9,58 @@ data class TaskItem(
     val priority: Int,
     val no_of_tasks: Int,
     val work_gap: Int,
-    val short_breaks: Int
+    val short_breaks: Int,
+    val laps_completed: Int,
+    val task_completed: Int,
+    val iscurrenttask: Int
 )
 
-fun TaskModel.toDomain() = TaskItem(name, short_descriptions, priority, no_of_tasks, work_gap, short_breaks)
-fun TaskEntity.toDomain() = TaskItem(name, short_descriptions, priority, no_of_tasks, work_gap, short_breaks)
+fun TaskModel.toDomain() = TaskItem(
+    name,
+    short_descriptions,
+    priority,
+    no_of_tasks,
+    work_gap,
+    short_breaks,
+    laps_completed,
+    task_completed,
+    iscurrenttask
+)
 
+fun TaskEntity.toDomain() = TaskItem(
+    name,
+    short_descriptions,
+    priority,
+    no_of_tasks,
+    work_gap,
+    short_breaks,
+    laps_completed,
+    task_completed,
+    iscurrenttask
+)
+
+fun TaskItem.toPendingTask() = if (task_completed == 0)
+    TaskItem(
+        name,
+        short_descriptions,
+        priority,
+        no_of_tasks,
+        work_gap,
+        short_breaks,
+        laps_completed,
+        task_completed,
+        iscurrenttask
+    ) else null
+
+fun TaskItem.toCompletedTask() = if (task_completed == 1)
+    TaskItem(
+        name,
+        short_descriptions,
+        priority,
+        no_of_tasks,
+        work_gap,
+        short_breaks,
+        laps_completed,
+        task_completed,
+        iscurrenttask
+    ) else null

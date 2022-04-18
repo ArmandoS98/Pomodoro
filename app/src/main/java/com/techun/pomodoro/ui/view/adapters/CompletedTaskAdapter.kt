@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.techun.pomodoro.R
-import com.techun.pomodoro.data.model.TaskModel
 import com.techun.pomodoro.databinding.ItemTaskBinding
+import com.techun.pomodoro.domain.TaskItem
 
-class CompletedTaskAdapter (private val context: Context?) :
+class CompletedTaskAdapter(private val context: Context?) :
     RecyclerView.Adapter<CompletedTaskAdapter.ViewHolder>() {
-    private var menuList: List<TaskModel> = listOf()
+    private var menuList: List<TaskItem> = listOf()
 
-    fun setMenu(movieList: List<TaskModel>) {
+    fun setMenu(movieList: List<TaskItem>) {
         this.menuList = movieList
     }
 

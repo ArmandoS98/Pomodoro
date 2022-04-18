@@ -6,15 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import com.techun.pomodoro.R
 import com.techun.pomodoro.databinding.FragmentNewTaskBinding
+import com.techun.pomodoro.domain.TaskItem
+import com.techun.pomodoro.ui.viewmodel.TaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class NewTaskFragment : Fragment(), View.OnClickListener {
+    private var selectedPriority: String? = "2"
     private var _binding: FragmentNewTaskBinding? = null
     private val binding get() = _binding!!
+    private val taskViewModel: TaskViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,35 +51,69 @@ class NewTaskFragment : Fragment(), View.OnClickListener {
 
         binding.imgBackArrow.setOnClickListener(this)
         binding.btnmCancel.setOnClickListener(this)
+        binding.btnmSave.setOnClickListener(this)
     }
+
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.imgBackArrow, R.id.btnmCancel -> {
                 findNavController().popBackStack(R.id.nav_tasks, false)
             }
+            R.id.btnmSave -> {
+                val name = binding.tieTaskName.text.toString()
+                val description = binding.tieShortDescription.text.toString()
+                val priority = when {
+                    binding.cLow.isChecked -> {
+                        2
+                    }
+                    binding.cMedium.isChecked -> {
+                        1
+                    }
+                    else -> {
+                        0
+                    }
+                }
+                selectedPriority?.toInt()
+                val noTasks = binding.actTasks.text.toString().toInt()
+                val duration = binding.actWorkG.text.toString().toInt()
+                val shortBreak = binding.actBreak.text.toString().toInt()
+
+                binding.cgPriority.children.forEach {
+                    (it as Chip).setOnCheckedChangeListener { _, _ ->
+                        handleSelection()
+                    }
+                }
+
+                taskViewModel.insertTaskModel.observe(viewLifecycleOwner) {
+                    if (it != (-1).toLong()) {
+                        println("Result Insert: $it")
+                        findNavController().popBackStack(R.id.nav_tasks, false)
+                    } else
+                        println("Se produjo un error al momento de insertar en la DB")
+                }
+
+                taskViewModel.insertTask(
+                    TaskItem(
+                        name,
+                        description,
+                        priority,
+                        noTasks,
+                        duration,
+                        shortBreak,
+                        0,
+                        0,
+                        0
+                    )
+                )
+            }
         }
     }
 
-    /*  private fun setupChip() {
-          for (i in 1..10) {
-              val chip = createChip(i.toString())
-              binding.cgTask.addView(chip)
-          }
-          for (i in 15..30) {
-              val chip = createChip(i.toString())
-              binding.cgWorkInterval.addView(chip)
-          }
-          for (i in 1..10) {
-              val chip = createChip(i.toString())
-              binding.cgShortBreak.addView(chip)
-          }
-      }
-
-      private fun createChip(label: String): Chip {
-          val chip = ChipBinding.inflate(layoutInflater).root
-          chip.text = label
-          return chip
-      }*/
-
+    private fun handleSelection() {
+        binding.cgPriority.checkedChipIds.forEach {
+            val chip = binding.root.findViewById<Chip>(it)
+            println("values: ${chip.text}")
+        }
+    }
 }

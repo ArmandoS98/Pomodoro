@@ -11,6 +11,9 @@ NAME
 SHORT DESCRIPTION
 PRIORITY
 CONFIG POMODO[NO_TASKS, WORK_GAP_MINS,BREAKS]
+TASK_COMPLETED
+COMPLETED
+ISCURRENT
  */
 @Entity(tableName = "task_table")
 data class TaskEntity(
@@ -21,7 +24,10 @@ data class TaskEntity(
     @ColumnInfo(name = "priority") val priority: Int,
     @ColumnInfo(name = "no_of_tasks") val no_of_tasks: Int,
     @ColumnInfo(name = "work_gap") val work_gap: Int,
-    @ColumnInfo(name = "short_breaks") val short_breaks: Int
+    @ColumnInfo(name = "short_breaks") val short_breaks: Int,
+    @ColumnInfo(name = "laps_completed") val laps_completed: Int,
+    @ColumnInfo(name = "task_completed") val task_completed: Int,
+    @ColumnInfo(name = "iscurrenttask") val iscurrenttask: Int
 )
 
 fun TaskItem.toDatabase() = TaskEntity(
@@ -30,5 +36,8 @@ fun TaskItem.toDatabase() = TaskEntity(
     priority = priority,
     no_of_tasks = no_of_tasks,
     work_gap = work_gap,
-    short_breaks = short_breaks
+    short_breaks = short_breaks,
+    laps_completed = laps_completed,
+    task_completed = task_completed,
+    iscurrenttask=iscurrenttask
 )
